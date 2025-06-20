@@ -4,7 +4,7 @@ body {
     /* Centers the body itself horizontally */
     font-family: 'Inter', sans-serif;
     /* Using a common sans-serif font */
-    background-color: #282828;
+    background-color: #1d2021;
     /* Gruvbox bg0 - main background */
     color: #ebdbb2;
     /* Gruvbox fg - foreground text */
@@ -23,7 +23,7 @@ body {
 
 /* Header Styling */
 .site-header {
-    background-color: #3c3836;
+    background-color: #282828;
     /* Gruvbox bg1 - slightly lighter dark */
     color: #ebdbb2;
     /* Gruvbox fg */
@@ -87,7 +87,7 @@ nav a:focus {
 .site-main {
     flex-grow: 1;
     /* Allows main content to take up available space */
-    background-color: #32302f;
+    background-color: #282828;
     /* Gruvbox bg_medium */
     padding: 30px;
     border-radius: 10px;
@@ -112,7 +112,7 @@ nav a:focus {
 }
 
 .h-card-section {
-    background-color: #3c3836;
+    background-color: #32302f;
     /* Gruvbox bg1 */
     padding: 20px;
     border-radius: 8px;
@@ -191,7 +191,7 @@ nav a:focus {
 }
 
 .gallery-item {
-    background-color: #3c3836;
+    background-color: #32302f;
     /* Gruvbox bg1 */
     padding: 15px;
     border-radius: 8px;
