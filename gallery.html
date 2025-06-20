@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <!-- Viewport meta tag for responsive design, crucial for optimal viewing on all devices -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lasaj's Website</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Favicon for the browser tab (optional, you can create a 'favicon.ico' or 'favicon.png' later) -->
+    <link rel="icon" href="https://lasaj.neocities.org/canon_a1_2_round.png" type="image/png">
+    <!-- Bluesky verification tag -->
+    <meta property="bsky:app-url" content="https://bsky.app/profile/lasaj.bsky.social">
+</head>
+
+<body>
+    <!-- Header section, consistent with index.html -->
+    <header class="site-header">
+        <h1>Photography Gallery</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="gallery.html">Gallery</a></li> <!-- Link to this page -->
+                <li><a href="about.html">About Me</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main content area for the gallery -->
+    <main class="site-main">
+        <section class="gallery-intro">
+            <h2>Gallery</h2>
+            <p>I capture most of my photos around where I live and on my travels. I enjoy analogue
+                photography and spend most of my time shooting on my Canon A1. I like changing film stocks, colour and
+                black and white are all good.
+            </p>
+            <p>Click on any image to view it larger.</p>
+        </section>
+
+        <section class="photo-grid">
+            <!-- Gallery Items -->
+            <div class="gallery-item">
+                <img src="https://lasaj.neocities.org/gallery/2024_04_04_000017_Kodak_Gold.jpg" alt="Pier">
+                <p>Canon A1 on Kodak Gold</p>
+            </div>
+            <div class="gallery-item">
+                <img src="https://lasaj.neocities.org/gallery/2024_04_17_000031_Gold.jpg" alt="Rock Inlet">
+                <p>Canon A1 on Kodak Gold</p>
+            </div>
+            <div class="gallery-item">
+                <img src="https://lasaj.neocities.org/gallery/2024_04_17_000003_Gold.jpg" alt="Lookout">
+                <p>Canon A1 on Kodak Gold</p>
+            </div>
+            <div class="gallery-item">
+                <img src="https://lasaj.neocities.org/gallery/2024_04_17_000019_Gold.jpg" alt="Sunrise Fishing">
+                <p>Canon A1 on Kodak Gold</p>
+            </div>
+            <div class="gallery-item">
+                <img src="https://lasaj.neocities.org/gallery/2024_04_04_000041_800T.jpg" alt="Central">
+                <p>Canon A1 on Chinese 800T</p>
+            </div>
+            <div class="gallery-item">
+                <img src="https://lasaj.neocities.org/gallery/2024_04_22_000005650024_hp5.jpg" alt="Sandbags">
+                <p>Canon A1 on Ilford HP5+</p>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer section, consistent with index.html -->
+    <footer class="site-footer">
+        <p>&copy; 2025 Lasaj. Built with love on Neocities.</p>
+        <p>All code available under CC BY-NC-SA 4.0</p>
+    </footer>
+
+    <!-- The Modal/Lightbox Structure -->
+    <div id="imageModal" class="image-modal">
+        <!-- Close Button -->
+        <span class="close-button">&times;</span>
+        <!-- Modal Content (The Image) -->
+        <img class="modal-content" id="modalImage">
+    </div>
+
+    <script>
+        // Get the modal, the image inside it, and the caption text
+        const modal = document.getElementById("imageModal");
+        const modalImage = document.getElementById("modalImage");
+
+        // Get all gallery images
+        const galleryImages = document.querySelectorAll(".gallery-item img");
+
+        // Get the <span> element that closes the modal
+        const closeButton = document.querySelector(".close-button");
+
+        // Loop through all gallery images and add a click event listener
+        galleryImages.forEach(img => {
+            img.onclick = function () {
+                modal.classList.add('image-modal--is-active'); // Show the modal using the active class
+                modalImage.src = this.src;      // Set the modal image source to the clicked image's source
+                captionText.innerHTML = this.alt; // Set the caption to the image's alt text
+            }
+        });
+
+        // When the user clicks on <span> (x), close the modal
+        closeButton.onclick = function () {
+            modal.classList.remove('image-modal--is-active'); // Hide the modal using the active class
+        }
+
+        // When the user clicks anywhere outside of the image, close the modal
+        window.onclick = function (event) {
+            if (event.target == modal) {
+                modal.classList.remove('image-modal--is-active'); // Hide the modal using the active class
+            }
+        }
+
+        // Optional: Add keyboard support for closing with 'Escape' key
+        document.addEventListener('keydown', function (event) {
+            if (event.key === "Escape" && modal.classList.contains('image-modal--is-active')) {
+                modal.classList.remove('image-modal--is-active'); // Hide the modal using the active class
+            }
+        });
+    </script>
+</body>
+
+</html>

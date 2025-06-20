@@ -1,0 +1,433 @@
+/* Basic Reset & Body Styles */
+body {
+    margin: 0 auto;
+    /* Centers the body itself horizontally */
+    font-family: 'Inter', sans-serif;
+    /* Using a common sans-serif font */
+    background-color: #282828;
+    /* Gruvbox bg0 - main background */
+    color: #ebdbb2;
+    /* Gruvbox fg - foreground text */
+    line-height: 1.6;
+    padding: 20px;
+    /* Padding around the entire content */
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    /* Ensures footer sticks to the bottom on short content pages */
+    box-sizing: border-box;
+    /* Include padding in element's total width and height */
+    max-width: 960px;
+    /* Limits the maximum width of the entire content area */
+}
+
+/* Header Styling */
+.site-header {
+    background-color: #3c3836;
+    /* Gruvbox bg1 - slightly lighter dark */
+    color: #ebdbb2;
+    /* Gruvbox fg */
+    padding: 20px 30px;
+    border-radius: 10px;
+    /* Rounded corners */
+    text-align: center;
+    margin-bottom: 30px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+    /* Darker shadow for dark theme */
+    box-sizing: border-box;
+    /* Include padding in element's total width and height */
+    width: 100%;
+    /* Ensures it fills the width of its parent (the now max-width constrained body) */
+}
+
+.site-header h1 {
+    margin: 0 0 15px 0;
+    font-size: 2.5em;
+    letter-spacing: 1px;
+    color: #fe8019;
+    /* Gruvbox orange for highlight */
+}
+
+/* Navigation Styling */
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    /* Horizontal navigation */
+    justify-content: center;
+    flex-wrap: wrap;
+    /* Allow wrapping on smaller screens */
+}
+
+nav li {
+    margin: 0 15px 10px 15px;
+    /* Add bottom margin for wrapped items */
+}
+
+nav a {
+    color: #ebdbb2;
+    /* Gruvbox fg */
+    text-decoration: none;
+    font-weight: bold;
+    padding: 8px 15px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+nav a:hover,
+nav a:focus {
+    background-color: #665c54;
+    /* Gruvbox bg_dark */
+    transform: translateY(-2px);
+    /* Slight lift effect */
+}
+
+/* Main Content Area */
+.site-main {
+    flex-grow: 1;
+    /* Allows main content to take up available space */
+    background-color: #32302f;
+    /* Gruvbox bg_medium */
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+    margin-bottom: 30px;
+    box-sizing: border-box;
+    width: 100%;
+    /* Ensures it fills the width of its parent (the now max-width constrained body) */
+}
+
+.intro h2,
+.h-card-section h3,
+.latest-updates h2,
+.gallery-intro h2 {
+    /* Added .gallery-intro h2 */
+    color: #83a598;
+    /* Gruvbox aqua */
+    border-bottom: 2px solid #504945;
+    /* Gruvbox bg2 for subtle border */
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+.h-card-section {
+    background-color: #3c3836;
+    /* Gruvbox bg1 */
+    padding: 20px;
+    border-radius: 8px;
+    margin-top: 30px;
+    border: 1px solid #665c54;
+    /* Gruvbox bg_dark for border */
+}
+
+.h-card-section ul {
+    list-style: none;
+    padding: 0;
+}
+
+.h-card-section li {
+    margin-bottom: 8px;
+}
+
+.h-card-section a {
+    color: #b8bb26;
+    /* Gruvbox green */
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.h-card-section a:hover {
+    color: #98971a;
+    /* Darker green on hover */
+    text-decoration: underline;
+}
+
+/* Article Styling (for blog posts, updates) */
+.h-entry {
+    border: 1px solid #504945;
+    /* Gruvbox bg2 */
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    background-color: #32302f;
+    /* Gruvbox bg_medium */
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+.h-entry h3 {
+    margin-top: 0;
+    font-size: 1.5em;
+    color: #fabd2f;
+    /* Gruvbox yellow */
+}
+
+.h-entry h3 a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.h-entry h3 a:hover {
+    text-decoration: underline;
+}
+
+.dt-published {
+    font-size: 0.9em;
+    color: #a89984;
+    /* Gruvbox gray */
+    margin-bottom: 15px;
+    display: block;
+    /* Ensures it takes full width */
+}
+
+/* Gallery Specific Styling */
+.photo-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    /* Responsive grid */
+    gap: 20px;
+    /* Space between grid items */
+    margin-top: 30px;
+}
+
+.gallery-item {
+    background-color: #3c3836;
+    /* Gruvbox bg1 */
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    /* Pushes image to top, text to bottom */
+}
+
+.gallery-item img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    display: block;
+    /* Removes extra space below image */
+    margin-left: auto;
+    margin-right: auto;
+    cursor: pointer;
+    /* Indicate image is clickable */
+    transition: transform 0.2s ease;
+}
+
+.gallery-item img:hover {
+    transform: scale(1.02);
+    /* Slightly enlarge on hover */
+}
+
+.gallery-item p {
+    font-size: 0.9em;
+    color: #a89984;
+    /* Gruvbox gray */
+    margin-bottom: 0;
+    flex-grow: 1;
+    /* Allows paragraph to take available space */
+}
+
+/* Modal Styling */
+.image-modal {
+    position: fixed;
+    /* Stay in place */
+    z-index: 1000;
+    /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%;
+    /* Full width */
+    height: 100%;
+    /* Full height */
+    overflow: auto;
+    /* Enable scroll if needed */
+    background-color: rgba(0, 0, 0, 0.8);
+    /* Black w/ opacity */
+    display: flex;
+    /* Use flexbox for centering */
+    align-items: center;
+    /* Vertically centers children */
+    justify-content: center;
+    /* Horizontally centers children */
+    visibility: hidden;
+    /* Hidden by default */
+    opacity: 0;
+    /* Hidden by default */
+    transition: visibility 0s 0.5s, opacity 0.5s ease;
+    /* Transition for fade-in/out */
+}
+
+.image-modal.image-modal--is-active {
+    visibility: visible;
+    /* Show the modal */
+    opacity: 1;
+    /* Make it fully opaque */
+    transition: visibility 0s, opacity 0.5s ease;
+    /* Adjust transition for showing */
+}
+
+.modal-content {
+    margin: auto;
+    display: block;
+    max-width: 90%;
+    /* Max width of image */
+    max-height: 90%;
+    /* Max height of image */
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    -webkit-animation: zoomIn 0.6s;
+    animation: zoomIn 0.6s;
+    object-fit: contain;
+    /* Ensures the image fits within its bounds without cropping */
+}
+
+.caption {
+    margin-top: 15px;
+    color: #ebdbb2;
+    /* Gruvbox fg */
+    font-size: 1.2em;
+    text-align: center;
+}
+
+.close-button {
+    position: absolute;
+    top: 15px;
+    right: 35px;
+    color: #ebdbb2;
+    /* Gruvbox fg */
+    font-size: 40px;
+    font-weight: bold;
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+.close-button:hover,
+.close-button:focus {
+    color: #fe8019;
+    /* Gruvbox orange on hover */
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Animations */
+@-webkit-keyframes fadeIn {
+    from {
+        opacity: 0
+    }
+
+    to {
+        opacity: 1
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0
+    }
+
+    to {
+        opacity: 1
+    }
+}
+
+@-webkit-keyframes zoomIn {
+    from {
+        -webkit-transform: scale(0.1)
+    }
+
+    to {
+        -webkit-transform: scale(1)
+    }
+}
+
+@keyframes zoomIn {
+    from {
+        transform: scale(0.1)
+    }
+
+    to {
+        transform: scale(1)
+    }
+}
+
+
+/* Footer Styling */
+.site-footer {
+    text-align: center;
+    padding: 20px;
+    margin-top: 30px;
+    font-size: 0.9em;
+    color: #a89984;
+    /* Gruvbox gray */
+    border-top: 1px solid #504945;
+    /* Gruvbox bg2 */
+    width: 100%;
+    /* Ensures it fills the width of its parent (the now max-width constrained body) */
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    body {
+        padding: 10px;
+    }
+
+    .site-header {
+        padding: 15px 20px;
+        /* Adjust header padding for smaller screens */
+    }
+
+    .site-header h1 {
+        font-size: 2em;
+    }
+
+    nav ul {
+        flex-direction: column;
+        /* Stack navigation items vertically on smaller screens */
+        align-items: center;
+    }
+
+    nav li {
+        margin: 5px 0;
+    }
+
+    .site-main {
+        padding: 20px;
+    }
+
+    .photo-grid {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        /* Adjust grid for smaller screens */
+        gap: 15px;
+    }
+
+    .modal-content {
+        width: 95%;
+        /* Adjust modal image width for very small screens */
+        height: auto;
+    }
+
+    .close-button {
+        font-size: 30px;
+        top: 10px;
+        right: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .site-header h1 {
+        font-size: 1.8em;
+    }
+
+    .site-main {
+        padding: 15px;
+    }
+
+    .photo-grid {
+        grid-template-columns: 1fr;
+        /* Single column on very small screens */
+    }
+}
