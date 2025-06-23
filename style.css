@@ -1,68 +1,81 @@
+/* Custom Font Definition */
+@font-face {
+    font-family: 'Fireye GF Headline';
+    src: url('fonts/fireye_gf/FireyeGF_3_Headline_condensed.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+    /* Ensures text is visible during font loading */
+}
+
+
 /* Basic Reset & Body Styles */
 body {
     margin: 0 auto;
-    /* Centers the body itself horizontally */
     font-family: 'Inter', sans-serif;
-    /* Using a common sans-serif font */
+    background-image: url('images/bg_gradient.png');
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center center;
     background-color: #1d2021;
-    /* Gruvbox bg0 - main background */
     color: #ebdbb2;
-    /* Gruvbox fg - foreground text */
     line-height: 1.6;
     padding: 20px;
-    /* Padding around the entire content */
     display: flex;
     flex-direction: column;
     min-height: 100vh;
     /* Ensures footer sticks to the bottom on short content pages */
     box-sizing: border-box;
-    /* Include padding in element's total width and height */
     max-width: 960px;
     /* Limits the maximum width of the entire content area */
 }
 
 /* Header Styling */
 .site-header {
-    background-color: #282828;
-    /* Gruvbox bg1 - slightly lighter dark */
-    color: #ebdbb2;
-    /* Gruvbox fg */
-    padding: 20px 30px;
-    border-radius: 10px;
-    /* Rounded corners */
+    background-color: rgba(6, 6, 41, 0.6);
+    color: rgb(232, 120, 225); /* Gruvbox fg */
+    padding: 20px 0px 0;
+    border-radius: 0; /* sharp corners */
     text-align: center;
     margin-bottom: 30px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
-    /* Darker shadow for dark theme */
     box-sizing: border-box;
-    /* Include padding in element's total width and height */
     width: 100%;
-    /* Ensures it fills the width of its parent (the now max-width constrained body) */
+    font-family: 'Fireye GF Headline', 'Inter', sans-serif;
+    /* Apply Fireye GF to all header text */
+    border: 1px solid #a2047b;
 }
 
 .site-header h1 {
     margin: 0 0 15px 0;
     font-size: 2.5em;
     letter-spacing: 1px;
-    color: #fe8019;
-    /* Gruvbox orange for highlight */
+    color: #e879e0;
 }
 
 /* Navigation Styling */
 nav ul {
     list-style: none;
     padding: 0;
-    margin: 0;
+    margin-top: 60px;
+    /* Add margin to separate from h1 */
+    margin-bottom: 0;
     display: flex;
-    /* Horizontal navigation */
-    justify-content: center;
+    justify-content: stretch;
     flex-wrap: wrap;
-    /* Allow wrapping on smaller screens */
+    margin-left: 0px;
+    margin-right: 0px;
+    width: calc(100%);
+    border-top: 1px solid #a2047b;
 }
 
 nav li {
-    margin: 0 15px 10px 15px;
-    /* Add bottom margin for wrapped items */
+    margin: 0;
+    flex: 1;
+    /* Makes list items grow to fill available space equally */
+    min-width: 0;
+    /* Allow items to shrink below their content size if necessary */
+    text-align: center;
 }
 
 nav a {
@@ -70,32 +83,35 @@ nav a {
     /* Gruvbox fg */
     text-decoration: none;
     font-weight: bold;
-    padding: 8px 15px;
-    border-radius: 5px;
-    transition: background-color 0.3s ease, transform 0.2s ease;
+    padding: 8px 0;
+    border-radius: 0;
+    border: 1px solid #a2047b;
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+    transition: background-color 0.3s ease;
 }
 
 nav a:hover,
 nav a:focus {
-    background-color: #665c54;
-    /* Gruvbox bg_dark */
-    transform: translateY(-2px);
-    /* Slight lift effect */
+    background-color: rgba(102, 92, 84, 0.6);
 }
 
 /* Main Content Area */
 .site-main {
     flex-grow: 1;
     /* Allows main content to take up available space */
-    background-color: #282828;
-    /* Gruvbox bg_medium */
+    background-color: rgba(6, 6, 41, 0.6);
+    /* Changed to 60% opacity */
     padding: 30px;
-    border-radius: 10px;
+    border-radius: 0;
+    /* Changed to sharp corners */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
     margin-bottom: 30px;
     box-sizing: border-box;
     width: 100%;
     /* Ensures it fills the width of its parent (the now max-width constrained body) */
+    border: 1px solid #a2047b;
 }
 
 .intro h2,
@@ -105,20 +121,17 @@ nav a:focus {
     /* Added .gallery-intro h2 */
     color: #83a598;
     /* Gruvbox aqua */
-    border-bottom: 2px solid #504945;
-    /* Gruvbox bg2 for subtle border */
+    border-bottom: 2px solid rgba(80, 73, 69, 0.6);
     padding-bottom: 10px;
     margin-bottom: 20px;
 }
 
 .h-card-section {
-    background-color: #32302f;
-    /* Gruvbox bg1 */
+    background-color: rgba(6, 6, 41, 0.6);
     padding: 20px;
-    border-radius: 8px;
+    border-radius: 0;
     margin-top: 30px;
-    border: 1px solid #665c54;
-    /* Gruvbox bg_dark for border */
+    border: none;
 }
 
 .h-card-section ul {
@@ -145,13 +158,14 @@ nav a:focus {
 
 /* Article Styling (for blog posts, updates) */
 .h-entry {
-    border: 1px solid #504945;
-    /* Gruvbox bg2 */
+    border: none;
+    /* Removed border */
     padding: 20px;
-    border-radius: 8px;
+    border-radius: 0;
+    /* Changed to sharp corners */
     margin-bottom: 20px;
-    background-color: #32302f;
-    /* Gruvbox bg_medium */
+    background-color: rgba(6, 6, 41, 0.6);
+    /* Changed to 60% opacity */
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
 }
 
@@ -191,22 +205,26 @@ nav a:focus {
 }
 
 .gallery-item {
-    background-color: #32302f;
-    /* Gruvbox bg1 */
+    background-color: rgba(6, 6, 41, 0.6);
+    /* Changed to 60% opacity */
     padding: 15px;
-    border-radius: 8px;
+    border-radius: 0;
+    /* Changed to sharp corners */
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
     text-align: center;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     /* Pushes image to top, text to bottom */
+    border: none;
+    /* Removed border */
 }
 
 .gallery-item img {
     max-width: 100%;
     height: auto;
-    border-radius: 5px;
+    border-radius: 0;
+    /* Changed to sharp corners */
     margin-bottom: 15px;
     display: block;
     /* Removes extra space below image */
@@ -245,8 +263,8 @@ nav a:focus {
     /* Full height */
     overflow: auto;
     /* Enable scroll if needed */
-    background-color: rgba(0, 0, 0, 0.8);
-    /* Black w/ opacity */
+    background-color: rgba(0, 0, 0, 0.9);
+    /* Changed to 90% opacity */
     display: flex;
     /* Use flexbox for centering */
     align-items: center;
@@ -277,7 +295,8 @@ nav a:focus {
     /* Max width of image */
     max-height: 90%;
     /* Max height of image */
-    border-radius: 8px;
+    border-radius: 0;
+    /* Changed to sharp corners */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
     -webkit-animation: zoomIn 0.6s;
     animation: zoomIn 0.6s;
@@ -363,8 +382,8 @@ nav a:focus {
     font-size: 0.9em;
     color: #a89984;
     /* Gruvbox gray */
-    border-top: 1px solid #504945;
-    /* Gruvbox bg2 */
+    border-top: 1px solid rgba(80, 73, 69, 0.6);
+    /* Reverted border color with 60% opacity */
     width: 100%;
     /* Ensures it fills the width of its parent (the now max-width constrained body) */
 }
