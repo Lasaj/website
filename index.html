@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <!-- Viewport meta tag for responsive design, crucial for optimal viewing on all devices -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lasaj's Website</title>
+    <title>Rick's Website</title>
     <link rel="stylesheet" href="style.css">
     <!-- Favicon for the browser tab (optional, you can create a 'favicon.ico' or 'favicon.png' later) -->
     <link rel="icon" href="images/canon_a1_2_round.png" type="image/png">
@@ -19,40 +19,75 @@
 
     <!-- Main content area -->
     <main class="site-main">
-        <section class="intro">
-            <h2>Hello World!</h2>
-            <p>Here is the start of my personal website. I intend to use this site to upload photos
-                and personal projects and mess around with web design.
-            </p>
-            <p>I enjoy analogue photography and music and a bunch of other hobbies that come and go.</p>
-        </section>
+        <div class="main-layout-grid">
+            <div class="main-content-area">
+                <section class="intro">
+                    <h2>Analogue Photography</h2>
+                    <p>Here is the start of my personal website. I intend to use this site to share photos
+                        and personal projects and mess around with web design.  I enjoy analogue photography, the look 
+                        and the style and the fact that I end up with fewer images to go through.
+                    </p>
+                    <p>
+                        The gallery is up and running with a few old photos from my travels.  I will be adding more 
+                        as I go along.
+                    </p>
+                    <p>I also enjoy software development, music and a bunch of other hobbies that come and go. I may add 
+                        some more pages for my other projects in the future.
+                    </p>
+                </section>
 
-        <!-- An h-card for your identity, a core IndieWeb building block -->
-        <!-- Replace content with your actual information -->
-        <section class="h-card-section">
-            <h3 class="p-name">Lasaj</h3>
-            <p><span class="p-note">Photography and software and other nonsense.</span></p>
-            <p>Find me on:</p>
-            <ul>
-                <li><a class="u-url" href="https://lasaj.neocities.org/">My Neocities Site</a></li>
-                <!-- Add links to other places you are online, e.g., Mastodon, GitHub -->
-                <li><a class="u-url" href="https://bsky.app/profile/lasaj.neocities.org">BlueSky</a></li>
-                <li><a class="u-url" href="https://github.com/Lasaj">GitHub</a></li>
-            </ul>
-        </section>
+                <!-- An h-card for your identity -->
+                <section class="h-card-section">
+                    <h3 class="p-name">Rick W</h3>
+                    <p><span class="p-note">Photography and software and other nonsense.</span></p>
+                    <p>Find me on:</p>
+                    <ul>
+                        <li><a class="u-url" href="https://lasaj.neocities.org/">Webpage</a></li>
+                        <!-- Add links to other places you are online, e.g., Mastodon, GitHub -->
+                        <li><a class="u-url" href="https://www.instagram.com/rickw.photo/">Instagram</a></li>
+                        <li><a class="u-url" href="https://github.com/Rick">GitHub</a></li>
+                    </ul>
+                </section>
 
-        <section class="latest-updates">
-            <h2>Latest Updates</h2>
-            <article class="h-entry">
-                <h3 class="p-name"><a class="u-url" href="#first-post">Website Created</a></h3>
-                <time class="dt-published" datetime="2025-06-20">June 20, 2025</time>
-                <div class="e-content">
-                    <p>Chucked up a template to see what happens when I change values.</p>
-                    <p>Implemented a rudimentary gallery, other pages to come.</p>
+                <section class="latest-updates">
+                    <h2>Latest Updates</h2>
+                    <article class="h-entry">
+                        <h3 class="p-name"><a class="u-url" href="#first-post">Gallery and Sidebar</a></h3>
+                        <time class="dt-published" datetime="2025-06-20">June 23, 2025</time>
+                        <div class="e-content">
+                            <p>I've updated the gallery to be a little more attractive and easy to view. It is still 
+                                quite rudimentary, but it looks much nicer.  I intent to add some more naviation options 
+                                and more images next.
+                            </p>
+                            <p>I've also added a sidebar to show off a selection of photos from the gallery. Mostly 
+                                because I wanted a sidebar on the homepage.</p>
+                        </div>
+                    </article>
+                    <article class="h-entry">
+                        <h3 class="p-name"><a class="u-url" href="#first-post">Website Created</a></h3>
+                        <time class="dt-published" datetime="2025-06-20">June 20, 2025</time>
+                        <div class="e-content">
+                            <p>Chucked up a template to see what happens when I change values.</p>
+                            <p>Implemented a rudimentary gallery, other pages to come.</p>
+                        </div>
+                    </article>
+                </section>
+            </div>
+
+            <aside class="sidebar">
+                <!-- Most recent image -->
+                <div class="sidebar-image-container" id="recentGalleryImagePlaceholder">
+                    <!-- Random image will be loaded here by includes.js -->
+                    <img src="https://placehold.co/400x300/665c54/a89984?text=Loading..." alt="Loading...">
                 </div>
-            </article>
-            <!-- You can add more articles here as you create new content -->
-        </section>
+                <!-- random image -->
+                <div class="sidebar-image-container" id="randomGalleryImagePlaceholder">
+                    <!-- Random image will be loaded here by includes.js -->
+                    <img src="https://placehold.co/400x300/665c54/a89984?text=Loading..." alt="Loading...">
+                </div>
+            </aside>
+
+        </div>
     </main>
 
     <!-- Footer section with copyright and other info -->
