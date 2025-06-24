@@ -41,12 +41,12 @@ export default function HomePage() {
             <time className="dt-published" dateTime="2025-06-20">June 23, 2025</time>
             <div className="e-content">
               <p>
-                I've updated the gallery to be a little more attractive and easy to view. It is still
+                I&apos;ve updated the gallery to be a little more attractive and easy to view. It is still
                 quite rudimentary, but it looks much nicer.  I intent to add some more naviation options 
                 and more images next.
               </p>
               <p>
-                I've also added a sidebar to show off a selection of photos from the gallery. Mostly
+                I&apos;ve also added a sidebar to show off a selection of photos from the gallery. Mostly
                 because I wanted a sidebar on the homepage.</p>
             </div>
           </article>

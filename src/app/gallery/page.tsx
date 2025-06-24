@@ -4,13 +4,6 @@ import React from 'react';
 import Image from 'next/image';
 import { galleryImages } from '@/data/galleryData';
 
-// interface for image data
-interface GalleryImage {
-  src: string;
-  alt: string;
-  caption: string;
-}
-
 export default function GalleryPage() {
   return (
     <div className="main-content-area">

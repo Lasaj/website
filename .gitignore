@@ -1,4 +1,6 @@
-public/
+public/fonts
+public/gallery
+public/images
 .gitignore
 
 # dependencies
