@@ -1,10 +1,24 @@
 "use client";
 
-import React from 'react';
+import React, { useState } from 'react';
 import Image from 'next/image';
-import { galleryImages } from '@/data/galleryData';
+import { galleryImages, GalleryImage } from '@/data/galleryData';
+import ImageModal from '@/components/ImageModal';
 
 export default function GalleryPage() {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [currentImage, setCurrentImage] = useState<GalleryImage | null>(null);
+
+  const openModal = (image: GalleryImage) => {
+    setCurrentImage(image);
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+    setCurrentImage(null);
+  };
+
   return (
     <div className="main-content-area">
         <section className="gallery-intro">
@@ -27,15 +41,19 @@ export default function GalleryPage() {
                         width={500}
                         height={500}
                         priority={index < 3}
-                        onClick={() => {
-                            alert(`Clicked ${image.alt}. Modal coming soon!`);
-                        }}
+                        onClick={() => openModal(image)}
                     />
                   </div>
                   <p>{image.caption}</p>
                 </div>
             ))}
         </section>
+
+      <ImageModal
+        isOpen={isModalOpen}
+        image={currentImage}
+        onClose={closeModal}
+      />
     </div>
   );
 }
