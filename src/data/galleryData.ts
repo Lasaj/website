@@ -15,4 +15,6 @@ export const galleryImages: GalleryImage[] = [
   { src: "/gallery/2024_04_17_000019_Gold.jpg", alt: "Sunrise Fishing", caption: "Canon A1 on Kodak Gold" },
   { src: "/gallery/2024_04_04_000041_800T.jpg", alt: "Central", caption: "Canon A1 on Chinese 800T" },
   { src: "/gallery/2024_04_22_000005650024_hp5.jpg", alt: "Sandbags", caption: "Canon A1 on Ilford HP5+" },
-];
+].sort((a, b) => {
+  return b.src.localeCompare(a.src);
+});
