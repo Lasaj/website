@@ -1,7 +1,7 @@
 import React from 'react';
 import SidebarImages from '@/components/SidebarImage';
 import ReactMarkdown from 'react-markdown';
-import { blogPosts, BlogPost } from '@/data/blogData';
+import { blogPosts } from '@/data/blogData';
 
 export default function HomePage() {
   return (
@@ -38,7 +38,7 @@ export default function HomePage() {
 
         <section className="latest-updates">
           <h2>Latest Updates</h2>
-          {blogPosts.map((post, index) => (
+          {blogPosts.map((post) => (
             <article className="h-entry" key={post.slug}>
               <h3 className="p-name"><a className="u-url" href={`#${post.slug}`}>{post.header}</a></h3>
               <time className="dt-published" dateTime={post.date}>{post.displayDate}</time>
