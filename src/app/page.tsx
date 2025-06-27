@@ -1,5 +1,7 @@
 import React from 'react';
 import SidebarImages from '@/components/SidebarImage';
+import ReactMarkdown from 'react-markdown';
+import { blogPosts, BlogPost } from '@/data/blogData';
 
 export default function HomePage() {
   return (
@@ -36,28 +38,13 @@ export default function HomePage() {
 
         <section className="latest-updates">
           <h2>Latest Updates</h2>
-          <article className="h-entry">
-            <h3 className="p-name"><a className="u-url" href="#first-post">Gallery and Sidebar</a></h3>
-            <time className="dt-published" dateTime="2025-06-20">June 23, 2025</time>
-            <div className="e-content">
-              <p>
-                I&apos;ve updated the gallery to be a little more attractive and easy to view. It is still
-                quite rudimentary, but it looks much nicer.  I intent to add some more naviation options 
-                and more images next.
-              </p>
-              <p>
-                I&apos;ve also added a sidebar to show off a selection of photos from the gallery. Mostly
-                because I wanted a sidebar on the homepage.</p>
-            </div>
-          </article>
-          <article className="h-entry">
-            <h3 className="p-name"><a className="u-url" href="#first-post">Website Created</a></h3>
-            <time className="dt-published" dateTime="2025-06-20">June 20, 2025</time>
-            <div className="e-content">
-              <p>Chucked up a template to see what happens when I change values.</p>
-              <p>Implemented a rudimentary gallery, other pages to come.</p>
-            </div>
-          </article>
+          {blogPosts.map((post, index) => (
+            <article className="h-entry" key={post.slug}>
+              <h3 className="p-name"><a className="u-url" href={`#${post.slug}`}>{post.header}</a></h3>
+              <time className="dt-published" dateTime={post.date}>{post.displayDate}</time>
+              <div className="e-content"><ReactMarkdown>{post.body}</ReactMarkdown></div>
+            </article>
+          ))}
         </section>
       </div>
 
