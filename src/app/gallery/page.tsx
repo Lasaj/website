@@ -7,24 +7,36 @@ import ImageModal from '@/components/ImageModal';
 
 export default function GalleryPage() {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [currentImage, setCurrentImage] = useState<GalleryImage | null>(null);
+  const [currentImageIndex, setCurrentImageIndex] = useState<number>(0);
 
-  const openModal = (image: GalleryImage) => {
-    setCurrentImage(image);
+  const openModal = (index: number) => {
+    setCurrentImageIndex(index);
     setIsModalOpen(true);
   };
 
   const closeModal = () => {
     setIsModalOpen(false);
-    setCurrentImage(null);
+  };
+
+  const nextImage = () => {
+    if (!galleryImages)
+      return
+    setCurrentImageIndex((currentImageIndex + 1) % galleryImages.length);
+  };
+
+  const prevImage = () => {
+    if (!galleryImages)
+      return
+    setCurrentImageIndex((currentImageIndex - 1 + galleryImages.length) % galleryImages.length);
   };
 
   return (
     <div className="main-content-area">
         <section className="gallery-intro">
             <h2>Gallery</h2>
-            <p>I capture most of my photos around where I live and on my travels. I enjoy analogue
-                photography and spend most of my time shooting on my Canon A1. I like changing film stocks, colour and
+            <p>I capture most of my photos around where I live and on my
+                travels. I enjoy analogue photography and spend most of my time
+                shooting on my Canon A1. I like changing film stocks, colour and
                 black and white are all good.
             </p>
             <p>Click on any image to view it larger.</p>
@@ -41,7 +53,7 @@ export default function GalleryPage() {
                         width={500}
                         height={500}
                         priority={index < 3}
-                        onClick={() => openModal(image)}
+                        onClick={() => openModal(index)}
                     />
                   </div>
                   <p>{image.caption}</p>
@@ -51,8 +63,11 @@ export default function GalleryPage() {
 
       <ImageModal
         isOpen={isModalOpen}
-        image={currentImage}
+        images={galleryImages}
+        index={currentImageIndex}
         onClose={closeModal}
+        onNext={nextImage}
+        onPrev={prevImage}
       />
     </div>
   );

@@ -6,11 +6,14 @@ import { GalleryImage } from "@/data/galleryData";
 
 interface ImageModalProps {
     isOpen: boolean;
-    image: GalleryImage | null;
+    images: GalleryImage[] | null;
+    index: number;
     onClose: () => void;
+    onNext: () => void;
+    onPrev: () => void;
 }
 
-export default function ImageModal({ isOpen, image, onClose }: ImageModalProps) {
+export default function ImageModal({ isOpen, images, index, onClose, onNext, onPrev }: ImageModalProps) {
     const modalRef = useRef<HTMLDivElement>(null);
 
     // Close with escape
@@ -18,6 +21,10 @@ export default function ImageModal({ isOpen, image, onClose }: ImageModalProps) 
         const handleKeyDown = (event: KeyboardEvent) => {
             if (event.key === "Escape" && isOpen) {
                 onClose();
+            } else if (event.key === "ArrowRight") {
+                onNext();
+            } else if (event.key === "ArrowLeft") {
+                onPrev();
             }
         };
 
@@ -49,15 +56,21 @@ export default function ImageModal({ isOpen, image, onClose }: ImageModalProps) 
         }
     };
 
-    if (!isOpen || !image) return null;
+    if (images && images.length > 0) {
+        var currentImage = images[index];
+    } else {
+        return null;
+    }
+
+    if (!isOpen || !currentImage) return null;
 
     return (
         <div id="imageModal" className={`image-modal ${isOpen ? 'image-modal--is-active' : ''}`} onClick={handleOverlayClick} ref={modalRef}>
             <span className="close-button" onClick={onClose}>&times;</span>
             <Image
                 className="modal-content"
-                src={image.src}
-                alt={image.alt}
+                src={currentImage.src}
+                alt={currentImage.alt}
                 width={1200}
                 height={900}
                 style={{ objectFit: "contain", width: "auto", height: "auto", maxWidth: "90%", maxHeight: "90%" }}
