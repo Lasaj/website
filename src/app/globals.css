@@ -334,10 +334,9 @@ nav a:focus {
     text-align: center;
 }
 
+.prev-button,
+.next-button,
 .close-button {
-    position: absolute;
-    top: 15px;
-    right: 35px;
     color: #ebdbb2;
     /* Gruvbox fg */
     font-size: 40px;
@@ -346,6 +345,26 @@ nav a:focus {
     cursor: pointer;
 }
 
+.prev-button {
+    position: absolute;
+    left: 35px;
+}
+
+.next-button {
+    position: absolute;
+    right: 35px;
+}
+
+.close-button {
+    position: absolute;
+    top: 15px;
+    right: 35px;
+}
+
+.prev-button:hover,
+.prev-button:focus,
+.next-button:hover,
+.next-button:focus,
 .close-button:hover,
 .close-button:focus {
     color: rgb(232, 120, 225);
@@ -490,8 +509,19 @@ nav a:focus {
         height: auto;
     }
 
+    .prev-button,
+    .next-button
     .close-button {
         font-size: 30px;
+    }
+
+    .prev-button {
+        right: 20px;
+    }
+    .next-button {
+        right: 20px;
+    }
+    .close-button {
         top: 10px;
         right: 20px;
     }

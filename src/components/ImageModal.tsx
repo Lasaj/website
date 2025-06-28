@@ -16,7 +16,7 @@ interface ImageModalProps {
 export default function ImageModal({ isOpen, images, index, onClose, onNext, onPrev }: ImageModalProps) {
     const modalRef = useRef<HTMLDivElement>(null);
 
-    // Close with escape
+    // Close with escape, navigate with arrows
     useEffect(() => {
         const handleKeyDown = (event: KeyboardEvent) => {
             if (event.key === "Escape" && isOpen) {
@@ -64,6 +64,10 @@ export default function ImageModal({ isOpen, images, index, onClose, onNext, onP
     return (
         <div id="imageModal" className={`image-modal ${isOpen ? 'image-modal--is-active' : ''}`} onClick={handleOverlayClick} ref={modalRef}>
             <span className="close-button" onClick={onClose}>&times;</span>
+
+            {/* Previous Button */}
+            <span className="prev-button" onClick={onPrev}>&lt;</span> {/* Left arrow character */}
+
             <Image
                 className="modal-content"
                 src={currentImage.src}
@@ -73,6 +77,10 @@ export default function ImageModal({ isOpen, images, index, onClose, onNext, onP
                 style={{ objectFit: "contain", width: "auto", height: "auto", maxWidth: "90%", maxHeight: "90%" }}
                 priority={true}
             />
+
+            {/* Next Button */}
+            <span className="next-button" onClick={onNext}>&gt;</span> {/* Right arrow character */}
+ 
         </div>
     );
 
