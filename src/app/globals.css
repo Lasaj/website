@@ -34,7 +34,7 @@ body {
 .site-header {
     background-color: rgba(6, 6, 41, 0.6);
     color: rgb(232, 120, 225);
-    padding: 20px 0px 0;
+    padding: 20px 0px 0px;
     border-radius: 0;
     /* sharp corners */
     text-align: center;
@@ -84,11 +84,10 @@ nav a {
     /* Gruvbox fg */
     text-decoration: none;
     font-weight: bold;
-    padding: 8px 0;
+    padding: 8px 0px;
     border-radius: 0;
     border: 1px solid #a2047b;
     display: block;
-    width: 100%;
     box-sizing: border-box;
     transition: background-color 0.3s ease;
 }
@@ -435,7 +434,6 @@ nav a:focus {
 /* Footer Styling */
 .site-footer {
     text-align: center;
-    padding: 20px;
     margin-top: 30px;
     font-size: 0.9em;
     color: #a89984;
@@ -478,6 +476,8 @@ nav a:focus {
 
     nav a {
         border-bottom: 1px solid #a2047b;
+        border-left: none;
+        border-right: none;
     }
 
     .site-main {
@@ -528,6 +528,10 @@ nav a:focus {
 }
 
 @media (max-width: 480px) {
+    body {
+        padding: 5px;
+    }
+
     .site-header h1 {
         font-size: 1.8em;
     }
