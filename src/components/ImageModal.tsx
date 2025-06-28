@@ -35,7 +35,7 @@ export default function ImageModal({ isOpen, images, index, onClose, onNext, onP
         return () => {
             document.removeEventListener('keydown', handleKeyDown);
         };
-    }, [isOpen, onClose]); // Re-run if modal state or onClose changes
+    }, [isOpen, onClose, onNext, onPrev]); // Re-run if modal state or onClose changes
 
     // Manage overflow when modal open
     useEffect(() => {
@@ -56,11 +56,8 @@ export default function ImageModal({ isOpen, images, index, onClose, onNext, onP
         }
     };
 
-    if (images && images.length > 0) {
-        var currentImage = images[index];
-    } else {
-        return null;
-    }
+    if (!images || images.length === 0) return null;
+    const currentImage: GalleryImage = images[index];
 
     if (!isOpen || !currentImage) return null;
 

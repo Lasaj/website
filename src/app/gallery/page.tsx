@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import Image from 'next/image';
-import { galleryImages, GalleryImage } from '@/data/galleryData';
+import { galleryImages } from '@/data/galleryData';
 import ImageModal from '@/components/ImageModal';
 
 export default function GalleryPage() {
