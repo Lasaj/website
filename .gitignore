@@ -1,6 +1,7 @@
 public/fonts
 public/gallery
 public/images
+src/data/posts
 .gitignore
 
 # dependencies
