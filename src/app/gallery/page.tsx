@@ -36,7 +36,7 @@ export default function GalleryPage() {
             <h2>Gallery</h2>
             <p>I capture most of my photos around where I live and on my
                 travels. I enjoy analogue photography and spend most of my time
-                shooting on my Canon A1. I like changing film stocks, colour and
+                shooting on my Canon A1. I like changing film stocks, colour or 
                 black and white are all good.
             </p>
             <p>Click on any image to view it larger.</p>
