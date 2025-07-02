@@ -12,10 +12,10 @@ export const gearItems: GearItem[] = [
         id: 'canon-a1',
         name: 'Canon A-1',
         imageSrc: '/images/gear/a1.jpg',
-        description: `My main camera body. Shown here with its 50mm 1.4f. 
+        description: `My main camera body. Shown here with its 50mm f1.4. 
         
-This has been very reliable and I enjoy shooting on it.  The light meter works well
-though, I would say it can slightly over-expose in direct sun, which isn't too 
+This has been very reliable and I enjoy shooting on it.  The light meter works well,
+though I would say it can slightly over-expose in direct sun, which isn't too 
 much of a problem.`
     },
     {
@@ -37,7 +37,7 @@ I use this for pretty much any anything.
 
 My wide-angle. Coming from shooting on an APS-C sensor, I was surprised how wide 24mm
 actually is. This lens is great for architecture when wandering around close spaces.
-Easy to use, nice and easy to focus, especially stopped down of course.
+Easy to use, nice and easy to focus, especially stopped down.
         `
     },
     {
