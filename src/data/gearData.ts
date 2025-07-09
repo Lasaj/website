@@ -49,7 +49,7 @@ Easy to use, nice and easy to focus, especially stopped down.
 My telephoto. This is a very nice lens, very bright and clear and takes very
 beautiful images.  The design is a little unconventional compared to modern lenses.
 The push-pull zoom takes a some getting used to and the focus can be a little too
-smooth.  Combined with the fact that it focuses past infinity and weights a tonne
+smooth.  Combined with the fact that it focuses past infinity and weighs a tonne
 I enjoy it best with a tripod. 
         `
     },

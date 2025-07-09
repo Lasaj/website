@@ -383,6 +383,7 @@ nav a:focus {
     display: flex;
     flex-direction: column;
     gap: 15px;
+    position: relative;
 }
 
 .sidebar h3 {
@@ -485,6 +486,33 @@ nav a:focus {
     /* Reverted border color with 60% opacity */
     width: 100%;
     /* Ensures it fills the width of its parent (the now max-width constrained body) */
+}
+
+.draggable-title-bar {
+    background-color: rgba(6, 6, 41, 0.8);
+    color: rgb(232, 120, 225);
+    user-select: none;
+    border: 1px solid #a2047b;
+    border-bottom: none;
+    padding-left: 5px;
+}
+
+/* Style for the content area within the draggable element */
+.draggable-content {
+    background-color: rgba(6, 6, 41, 0.8);
+    text-align: center;
+    border: 1px solid #a2047b;
+}
+
+/* Remove padding/border/background from .draggable-image-window if it's now wrapped by .draggable-content */
+.draggable-image-window {
+    background-color: rgba(6, 6, 41, 0.8);
+}
+
+/* Ensure images within the draggable window respect its size */
+.draggable-image-window img {
+    max-width: 80%;
+    max-height: 80%;
 }
 
 /* Responsive Adjustments */
