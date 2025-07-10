@@ -375,7 +375,7 @@ nav a:focus {
 .sidebar {
     background-color: rgba(6, 6, 41, 0.6);
     /* Same background as main content */
-    margin-top: 260;
+    margin-top: 260px;
     padding: 20px;
     border-radius: 0;
     border: 1px solid #a2047b;

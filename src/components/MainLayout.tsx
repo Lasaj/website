@@ -50,7 +50,7 @@ export default function MainLayout({ children }: MainLayoutProps) {
     return () => {
       observer.disconnect();
     };
-  }, []);
+  }, [children]);
 
   return (
     <div className="main-layout-grid" ref={mainGridRef}>
