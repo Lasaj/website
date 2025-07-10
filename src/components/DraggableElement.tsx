@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useRef, useState, CSSProperties} from "react";
+import React, { useEffect, useRef, useState, CSSProperties, forwardRef } from "react";
 
 interface DraggableElementProps {
     children: React.ReactNode;
@@ -10,89 +10,100 @@ interface DraggableElementProps {
     title?: string;
 }
 
-export default function DraggableElement({ children, initialX = 0, initialY = 0, restrictToParent = false, title }: DraggableElementProps) {
-    const [isDragging, setIsDragging] = useState(false);
-    const [position, setPosition] = useState({ x: initialX, y: initialY });
-    const [offset, setOffset] = useState({ x: 0, y: 0 });
-    const elementRef = useRef<HTMLDivElement>(null);
-    const parentRef = useRef<HTMLElement | null>(null);
+const DraggableElement = forwardRef<HTMLDivElement, DraggableElementProps>(
+    ({ children, initialX = 0, initialY = 0, restrictToParent = false, title }, ref) => {
+        const [isDragging, setIsDragging] = useState(false);
+        const [position, setPosition] = useState({ x: initialX, y: initialY });
+        const [offset, setOffset] = useState({ x: 0, y: 0 });
+        const parentRef = useRef<HTMLElement | null>(null);
 
-    // Effect for mouse listeners
-    useEffect(() => {
-        const handleMouseMove = (event: MouseEvent) => {
-            if (!isDragging || !elementRef.current) return;
-        
-            let newX = event.clientX - offset.x;
-            let newY = event.clientY - offset.y;
+        useEffect(() => {
+            setPosition({ x: initialX, y: initialY });
+        }, [initialX, initialY]);
 
-            if (restrictToParent && parentRef.current) {
-                const parentRect = parentRef.current.getBoundingClientRect();
-                const elementRect = elementRef.current.getBoundingClientRect();
+        useEffect(() => {
+            const handleMouseMove = (event: MouseEvent) => {
+                if (!isDragging) return;
+                
+                const element = (ref as React.RefObject<HTMLDivElement>)?.current;
+                if (!element) return;
+            
+                let newX = event.clientX - offset.x;
+                let newY = event.clientY - offset.y;
 
-                newX = Math.max(0, Math.min(newX, parentRect.width - elementRect.width));
-                newY = Math.max(0, Math.min(newY, parentRect.height - elementRect.height));
+                if (restrictToParent && parentRef.current) {
+                    const parentRect = parentRef.current.getBoundingClientRect();
+                    const elementRect = element.getBoundingClientRect();
+
+                    newX = Math.max(0, Math.min(newX, parentRect.width - elementRect.width));
+                    newY = Math.max(0, Math.min(newY, parentRect.height - elementRect.height));
+                }
+
+                setPosition({ x: newX, y: newY });
+            };
+
+            const handleMouseUp = () => {
+                setIsDragging(false);
+            };
+
+            if (isDragging) {
+                document.addEventListener('mousemove', handleMouseMove);
+                document.addEventListener('mouseup', handleMouseUp);
             }
 
-            setPosition({ x: newX, y: newY });
+            return () => {
+                document.removeEventListener('mousemove', handleMouseMove);
+                document.removeEventListener('mouseup', handleMouseUp);
+            };
+        }, [isDragging, offset, restrictToParent, parentRef, ref]);
+
+        useEffect(() => {
+            const element = (ref as React.RefObject<HTMLDivElement>)?.current;
+            if (restrictToParent && element) {
+                parentRef.current = element.parentElement;
+            } else {
+                parentRef.current = null;
+            }
+        }, [restrictToParent, ref]);
+
+        const handleMouseDown = (event: React.MouseEvent<HTMLDivElement>) => {
+            setIsDragging(true);
+            setOffset({
+                x: event.clientX - position.x,
+                y: event.clientY - position.y,
+            });
         };
 
-        const handleMouseUp = () => {
-            setIsDragging(false);
+        const draggableContainerStyle: CSSProperties = {
+            position: 'absolute',
+            left: position.x,
+            top: position.y,
+            zIndex: 999,
+            touchAction: 'none',
+            visibility: initialX < 0 ? 'hidden' : 'visible',
         };
 
-        if (isDragging) {
-            document.addEventListener('mousemove', handleMouseMove);
-            document.addEventListener('mouseup', handleMouseUp);
-        }
-
-        return () => {
-            document.removeEventListener('mousemove', handleMouseMove);
-            document.removeEventListener('mouseup', handleMouseUp);
-        };
-    }, [isDragging, offset, restrictToParent, parentRef]);
-
-    useEffect(() => {
-        if (restrictToParent && elementRef.current) {
-            parentRef.current = elementRef.current.parentElement;
-        } else {
-            parentRef.current = null;
-        }
-    }, [restrictToParent, elementRef]);
-
-    const handleMouseDown = (event: React.MouseEvent<HTMLDivElement>) => {
-        if (!elementRef.current) return;
-    
-        setIsDragging(true);
-        setOffset({
-            x: event.clientX - elementRef.current.getBoundingClientRect().left - window.scrollX,
-            y: event.clientY - elementRef.current.getBoundingClientRect().top - window.scrollY,
-        });
-    };
-
-    const draggableContainerStyle: CSSProperties = {
-        position: 'absolute',
-        left: position.x,
-        top: position.y,
-        zIndex: 999,
-        touchAction: 'none',
-    };
-
-    return (
-        <div
-            className="draggable-image-window"
-            ref={elementRef}
-            style={draggableContainerStyle}
-        >
+        return (
             <div
-                className="draggable-title-bar"
-                onMouseDown={handleMouseDown}
-                style={{ cursor: isDragging ? 'grabbing' : 'grab' }}
+                className="draggable-image-window"
+                ref={ref}
+                style={draggableContainerStyle}
             >
-                {title}
+                <div
+                    className="draggable-title-bar"
+                    onMouseDown={handleMouseDown}
+                    style={{ cursor: isDragging ? 'grabbing' : 'grab' }}
+                >
+                    {title}
+                </div>
+                <div className="draggable-content">
+                    {children}
+                </div>
             </div>
-            <div className="draggable-content">
-                {children}
-            </div>
-        </div>
-    );
-}
+        );
+    }
+);
+
+DraggableElement.displayName = "DraggableElement";
+
+export default DraggableElement;

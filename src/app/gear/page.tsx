@@ -9,15 +9,39 @@ import Image from 'next/image';
 
 export default function GearPage() {
   const sidebarRef = useRef<HTMLElement>(null);
-  const [sidebarOffset, setSidebarOffset] = useState<{ x: number, y: number } | null>(null);
+  const draggableRef = useRef<HTMLDivElement>(null);
+  const [draggableOffset, setDraggableOffset] = useState({ x: -9999, y: -9999 });
 
   useEffect(() => {
+    const calculatePosition = () => {
+      if (sidebarRef.current && draggableRef.current) {
+        const sidebarRect = sidebarRef.current.getBoundingClientRect();
+        const draggableRect = draggableRef.current.getBoundingClientRect();
+
+        if (draggableRect.width > 0) {
+          const sidebarCentre = (sidebarRect.left + sidebarRect.right) / 2;
+          const centredX = sidebarCentre - (draggableRect.width / 2);
+          const centredY = sidebarRect.top + 680;
+          setDraggableOffset({ x: centredX, y: centredY });
+        }
+      }
+    };
+
+    const observer = new ResizeObserver(() => {
+      calculatePosition();
+    });
+
     if (sidebarRef.current) {
-      const rect = sidebarRef.current.getBoundingClientRect();
-      setSidebarOffset({ x: rect.left, y: rect.top });
+      observer.observe(sidebarRef.current);
+    }
+    if (draggableRef.current) {
+      observer.observe(draggableRef.current);
+    }
+
+    return () => {
+      observer.disconnect();
     };
   }, []);
-
 
   return (
     <div className="main-layout-grid">
@@ -53,20 +77,19 @@ export default function GearPage() {
       <aside className="sidebar" ref={sidebarRef}>
         <SidebarImages />
       </aside>
-      {sidebarOffset && (
-        <DraggableElement initialX={sidebarOffset.x} initialY={sidebarOffset.y + 600} restrictToParent={false} title="&#x2724;">
-          <div className="draggable-image-window"> {/* Add a class for styling the draggable content */}
-            <Image
-              src="/images/canon_a1_2_round.png"
-              alt="Canon A1 Camera Icon"
-              width={200}  // Set a fixed width for the draggable image
-              height={200} // Set a fixed height for the draggable image
-              style={{ objectFit: 'contain' }} // Ensure image fits
-              priority={true}
-            />
-          </div>
-        </DraggableElement>
-      )}
+      
+      <DraggableElement ref={draggableRef} initialX={draggableOffset.x} initialY={draggableOffset.y} restrictToParent={false} title="&#x2724;">
+        <div className="draggable-image-window">
+          <Image
+            src="/images/canon_a1_2_round.png"
+            alt="Canon A1 Camera Icon"
+            width={160}  // Set a fixed size for the draggable image
+            height={160} 
+            style={{ objectFit: 'contain' }} // Ensure image fits
+            priority={true}
+          />
+        </div>
+      </DraggableElement>
     </div>
   );
 }
