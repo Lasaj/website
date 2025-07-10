@@ -375,6 +375,7 @@ nav a:focus {
 .sidebar {
     background-color: rgba(6, 6, 41, 0.6);
     /* Same background as main content */
+    margin-top: 260;
     padding: 20px;
     border-radius: 0;
     border: 1px solid #a2047b;
@@ -612,6 +613,10 @@ nav a:focus {
         height: 200px;
         /* Keep height fixed or adjust as needed */
     }
+
+    .sidebar {
+        margin-top: auto;
+    }
 }
 
 @media (max-width: 480px) {
@@ -630,5 +635,9 @@ nav a:focus {
     .photo-grid {
         grid-template-columns: 1fr;
         /* Single column on very small screens */
+    }
+
+    .sidebar {
+        margin-top: auto;
     }
 }
