@@ -9,14 +9,13 @@ export default function HomePage() {
       <section className="intro">
         <h2>Analogue Photography</h2>
         <p>
-          Here is the start of my personal website. I intend to use this site to share photos
-          and personal projects and mess around with web design.  I enjoy analogue photography, the look 
+          Here is my personal website. I intend to use this site to share photos
+          and personal projects but mostly to mess around with web design.  I enjoy analogue photography, the look 
           and the style and the fact that I end up with fewer images to go through, so this is my place 
           to share some of my shots.
         </p>
         <p>
-          The gallery is up and running with a few old photos from my travels.  I will be adding more 
-          as I go along.
+          The gallery is up and running and being improved all the time.  
         </p>
         <p>
           I also enjoy software development, music and a bunch of other hobbies that come and go. I may add
