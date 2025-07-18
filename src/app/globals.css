@@ -8,6 +8,53 @@
     /* Ensures text is visible during font loading */
 }
 
+.theme-vaporpunk {
+    /* Backgrounds and text */
+    --color-bg-primary: rgb(29, 32, 33);
+    --color-text-primary: rgb(235, 219, 178);
+    --color-bg-secondary: rgba(6, 6, 41, 0.6);
+    --color-bg-tertiary: rgba(40, 40, 70, 0.9);
+    --color-bg-modal-overlay: rgba(0, 0, 0, 0.9);
+    --color-bg-nav-hover: rgba(102, 92, 84, 0.6);
+    --color-bg-nav-hover-darker: rgba(102, 92, 84, 0.8);
+    --color-bg-placeholder-subtle: rgba(0, 0, 0, 0.2);
+
+    /* Accent Colors */
+    --color-accent-primary: rgb(232, 120, 225);
+    --color-accent-secondary: rgb(162, 4, 123);
+    --color-accent-link: rgb(0, 121, 200);
+    --color-accent-link-hover: rgb(0, 121, 200);
+    --color-accent-modal-arrow: rgb(232, 120, 225);
+
+    /* Borders and separators */
+    --color-border-primary: rgba(80, 73, 69, 0.6);
+    --color-border-accent: rgb(162, 4, 123);
+
+    /* Extra for gruvbox gray */
+    --color-text-secondary: rgb(168, 153, 132);
+}
+
+:root {
+    --color-bg-primary: rgb(29, 32, 33);
+    --color-text-primary: rgb(235, 219, 178);
+    --color-bg-secondary: rgba(6, 6, 41, 0.6);
+    --color-bg-tertiary: rgba(40, 40, 70, 0.9);
+    --color-bg-modal-overlay: rgba(0, 0, 0, 0.9);
+    --color-bg-nav-hover: rgba(102, 92, 84, 0.6);
+    --color-bg-nav-hover-darker: rgba(102, 92, 84, 0.8);
+    --color-bg-placeholder-subtle: rgba(0, 0, 0, 0.2);
+
+    --color-accent-primary: rgb(232, 120, 225);
+    --color-accent-secondary: rgb(162, 4, 123);
+    --color-accent-link: rgb(0, 121, 200);
+    --color-accent-link-hover: rgb(0, 121, 200);
+    --color-accent-modal-arrow: rgb(232, 120, 225);
+
+    --color-border-primary: rgba(80, 73, 69, 0.6);
+    --color-border-accent: rgb(162, 4, 123);
+
+    --color-text-secondary: rgb(168, 153, 132);
+}
 
 /* Basic Reset & Body Styles */
 body {
@@ -17,41 +64,37 @@ body {
     background-size: cover;
     background-attachment: fixed;
     background-position: center center;
-    background-color: rgb(29, 32, 33);
-    color: rgb(235, 219, 178);
+    background-color: var(--color-bg-primary);
+    color: var(--color-text-primary);
     line-height: 1.6;
     padding: 20px;
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-    /* Ensures footer sticks to the bottom on short content pages */
     box-sizing: border-box;
     max-width: 960px;
-    /* Limits the maximum width of the entire content area */
 }
 
 /* Header Styling */
 .site-header {
-    background-color: rgba(6, 6, 41, 0.6);
-    color: rgb(232, 120, 225);
+    background-color: var(--color-bg-secondary);
+    color: var(--color-accent-primary);
     padding: 20px 0px 0px;
     border-radius: 0;
-    /* sharp corners */
     text-align: center;
     margin-bottom: 30px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+    box-shadow: 0 4px 8px var(--color-bg-modal-overlay);
     box-sizing: border-box;
     width: 100%;
     font-family: 'Fireye GF Headline', 'Inter', sans-serif;
-    /* Apply Fireye GF to all header text */
-    border: 1px solid #a2047b;
+    border: 1px solid var(--color-accent-secondary);
 }
 
 .site-header h1 {
     margin: 0 0 15px 0;
     font-size: 2.5em;
     letter-spacing: 1px;
-    color: #e879e0;
+    color: var(--color-accent-primary);
 }
 
 /* Navigation Styling */
@@ -59,7 +102,6 @@ nav ul {
     list-style: none;
     padding: 0;
     margin-top: 15px;
-    /* Add margin to separate from h1 */
     margin-bottom: 0;
     display: flex;
     justify-content: stretch;
@@ -67,26 +109,23 @@ nav ul {
     margin-left: 0px;
     margin-right: 0px;
     width: calc(100%);
-    border-top: 1px solid #a2047b;
+    border-top: 1px solid var(--color-accent-secondary);
 }
 
 nav li {
     margin: 0;
     flex: 1;
-    /* Makes list items grow to fill available space equally */
     min-width: 0;
-    /* Allow items to shrink below their content size if necessary */
     text-align: center;
 }
 
 nav a {
-    color: #ebdbb2;
-    /* Gruvbox fg */
+    color: var(--color-text-primary);
     text-decoration: none;
     font-weight: bold;
     padding: 8px 0px;
     border-radius: 0;
-    border: 1px solid #a2047b;
+    border: 1px solid var(--color-accent-secondary);
     display: block;
     box-sizing: border-box;
     transition: background-color 0.3s ease;
@@ -94,60 +133,50 @@ nav a {
 
 nav a:hover,
 nav a:focus {
-    background-color: rgba(102, 92, 84, 0.6);
+    background-color: var(--color-bg-nav-hover);
 }
 
 /* Main Content Area */
 .site-main {
     flex-grow: 1;
-    /* Allows main content to take up available space */
-    /* Changed to 60% opacity */
     border-radius: 0;
-    /* Changed to sharp corners */
     margin-bottom: 30px;
     box-sizing: border-box;
     width: 100%;
-    /* Ensures it fills the width of its parent (the now max-width constrained body) */
 }
 
 /* Grid layout for main content and sidebar */
 .main-layout-grid {
     display: grid;
     grid-template-columns: 3fr 1fr;
-    /* Main content 3 parts, sidebar 1 part */
     gap: 30px;
-    /* Space between main content and sidebar */
 }
 
 .main-content-area {
-    /* Styles for the left column (your existing sections) */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
-    background-color: rgba(6, 6, 41, 0.6);
+    box-shadow: 0 4px 8px var(--color-bg-modal-overlay);
+    background-color: var(--color-bg-secondary);
     display: flex;
     flex-direction: column;
     gap: 20px;
-    /* Space between sections like intro, h-card, updates */
     padding: 30px;
-    border: 1px solid #a2047b;
+    border: 1px solid var(--color-accent-secondary);
 }
 
 .intro h2,
 .h-card-section h3,
 .latest-updates h2,
 .gallery-intro h2 {
-    /* Added .gallery-intro h2 */
-    color: rgb(232, 120, 225);
-    border-bottom: 2px solid rgba(80, 73, 69, 0.6);
+    color: var(--color-accent-primary);
+    border-bottom: 2px solid var(--color-border-primary);
     padding-bottom: 10px;
     margin-bottom: 20px;
 }
 
 .h-card-section {
-    background-color: rgba(6, 6, 41, 0.6);
+    background-color: var(--color-bg-secondary);
     padding: 20px;
     border-radius: 0;
     margin-top: 0;
-    /* Adjusted for gap in main-content-area */
     border: none;
 }
 
@@ -161,37 +190,30 @@ nav a:focus {
 }
 
 .h-card-section a {
-    color: #0079c8;
-    /* Gruvbox green */
+    color: var(--color-accent-link);
     text-decoration: none;
     transition: color 0.2s ease;
 }
 
 .h-card-section a:hover {
-    color: #0079c8;
-    /* Darker green on hover */
+    color: var(--color-accent-link-hover);
     text-decoration: underline;
 }
 
 /* Article Styling (for blog posts, updates) */
 .h-entry {
     border: none;
-    /* Removed border */
     padding: 20px;
     border-radius: 0;
-    /* Changed to sharp corners */
     margin-bottom: 0;
-    /* Adjusted for gap in main-content-area */
-    background-color: rgba(6, 6, 41, 0.6);
-    /* Changed to 60% opacity */
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+    background-color: var(--color-bg-secondary);
+    box-shadow: 0 1px 3px var(--color-bg-placeholder-subtle);
 }
 
 .h-entry h3 {
     margin-top: 0;
     font-size: 1.5em;
-    color: rgb(232, 120, 225);
-    /* Gruvbox yellow */
+    color: var(--color-accent-primary);
 }
 
 .h-entry h3 a {
@@ -205,130 +227,103 @@ nav a:focus {
 
 .dt-published {
     font-size: 0.9em;
-    color: #a89984;
-    /* Gruvbox gray */
+    color: var(--color-text-secondary);
     margin-bottom: 15px;
     display: block;
-    /* Ensures it takes full width */
 }
 
 /* Gallery Specific Styling */
 .photo-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    /* Responsive grid */
     gap: 20px;
-    /* Space between grid items */
     margin-top: 30px;
 }
 
 .gallery-item {
-    background-color: rgba(6, 6, 41, 0.6);
+    background-color: var(--color-bg-secondary);
     padding: 15px;
     padding-bottom: 30px;
     border-radius: 0;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 2px 5px var(--color-bg-placeholder-subtle);
     text-align: center;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    /* Pushes image to top, text to bottom */
     border: none;
     position: relative;
 }
 
 .gallery-image-wrapper {
-  position: relative;
-  width: 100%;
-  padding-top: 100%;
-  overflow: hidden;
-  margin-bottom: 15px;
-  border-radius: 0;
+    position: relative;
+    width: 100%;
+    padding-top: 100%;
+    overflow: hidden;
+    margin-bottom: 15px;
+    border-radius: 0;
 }
 
 .gallery-image-wrapper img {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  object-position: center;
-  transition: transform 0.2s ease;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: center;
+    transition: transform 0.2s ease;
 }
 
 .gallery-image-wrapper img:hover {
-  transform: scale(1.02);
+    transform: scale(1.02);
 }
 
 .gallery-item p {
     font-size: 0.9em;
-    color: #a89984;
-    /* Gruvbox gray */
+    color: var(--color-text-secondary);
     margin-bottom: 0;
     flex-grow: 1;
-    /* Allows paragraph to take available space */
 }
 
 /* Modal Styling */
 .image-modal {
     position: fixed;
-    /* Stay in place */
     z-index: 1000;
-    /* Sit on top */
     left: 0;
     top: 0;
     width: 100%;
-    /* Full width */
     height: 100%;
-    /* Full height */
     overflow: auto;
-    /* Enable scroll if needed */
-    background-color: rgba(0, 0, 0, 0.9);
-    /* Changed to 90% opacity */
+    background-color: var(--color-bg-modal-overlay);
     display: flex;
-    /* Use flexbox for centering */
     align-items: center;
-    /* Vertically centers children */
     justify-content: center;
-    /* Horizontally centers children */
     visibility: hidden;
-    /* Hidden by default */
     opacity: 0;
-    /* Hidden by default */
     transition: visibility 0s 0.5s, opacity 0.5s ease;
-    /* Transition for fade-in/out */
 }
 
 .image-modal.image-modal--is-active {
     visibility: visible;
-    /* Show the modal */
     opacity: 1;
-    /* Make it fully opaque */
     transition: visibility 0s, opacity 0.5s ease;
-    /* Adjust transition for showing */
 }
 
 .modal-content {
     margin: auto;
     display: block;
     max-width: 90%;
-    /* Max width of image */
     max-height: 90%;
-    /* Max height of image */
     border-radius: 0;
-    /* Changed to sharp corners */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 4px 8px var(--color-bg-placeholder-subtle);
     -webkit-animation: zoomIn 0.6s;
     animation: zoomIn 0.6s;
     object-fit: contain;
-    /* Ensures the image fits within its bounds without cropping */
 }
 
 .caption {
     margin-top: 15px;
-    color: #ebdbb2;
-    /* Gruvbox fg */
+    color: var(--color-text-primary);
     font-size: 1.2em;
     text-align: center;
 }
@@ -336,8 +331,7 @@ nav a:focus {
 .prev-button,
 .next-button,
 .close-button {
-    color: #ebdbb2;
-    /* Gruvbox fg */
+    color: var(--color-text-primary);
     font-size: 40px;
     font-weight: bold;
     transition: 0.3s;
@@ -366,20 +360,19 @@ nav a:focus {
 .next-button:focus,
 .close-button:hover,
 .close-button:focus {
-    color: rgb(232, 120, 225);
+    color: var(--color-accent-primary);
     text-decoration: none;
     cursor: pointer;
 }
 
 /* Sidebar Styling */
 .sidebar {
-    background-color: rgba(6, 6, 41, 0.6);
-    /* Same background as main content */
+    background-color: var(--color-bg-secondary);
     margin-top: 260px;
     padding: 20px;
     border-radius: 0;
-    border: 1px solid #a2047b;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+    border: 1px solid var(--color-accent-secondary);
+    box-shadow: 0 4px 8px var(--color-bg-modal-overlay);
     text-align: center;
     display: flex;
     flex-direction: column;
@@ -388,10 +381,10 @@ nav a:focus {
 }
 
 .sidebar h3 {
-    color: rgb(232, 120, 225);
+    color: var(--color-accent-primary);
     font-size: 1.5em;
     margin-top: 0;
-    border-bottom: 2px solid rgba(80, 73, 69, 0.6);
+    border-bottom: 2px solid var(--color-border-primary);
     padding-bottom: 10px;
 }
 
@@ -405,49 +398,46 @@ nav a:focus {
     height: auto;
     display: block;
     border-radius: 0;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 2px 5px var(--color-bg-placeholder-subtle);
 }
 
 .sidebar-caption {
     font-size: 0.9em;
-    color: #a89984;
+    color: var(--color-text-secondary);
     margin-bottom: 15px;
 }
 
 .sidebar-link {
     display: block;
-    background-color: rgba(102, 92, 84, 0.6);
-    /* Hover color for consistency */
-    color: #ebdbb2;
+    background-color: var(--color-bg-nav-hover);
+    color: var(--color-text-primary);
     text-decoration: none;
     padding: 10px 15px;
     border-radius: 0;
     font-weight: bold;
     transition: background-color 0.3s ease;
-    border: 1px solid #a2047b;
+    border: 1px solid var(--color-accent-secondary);
 }
 
 .sidebar-link:hover {
-    background-color: rgba(102, 92, 84, 0.8);
-    /* Slightly darker on hover */
+    background-color: var(--color-bg-nav-hover-darker);
 }
 
 /* Gear Page Styling */
 .gear-item-card {
-    background-color: rgba(6, 6, 41, 0.6);
+    background-color: var(--color-bg-secondary);
     padding: 20px;
     border-radius: 0;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+    box-shadow: 0 4px 8px var(--color-bg-modal-overlay);
     margin-bottom: 20px;
-    /* Space between gear items */
-    border: 1px solid #a2047b;
+    border: 1px solid var(--color-accent-secondary);
 }
 
 .gear-item-card h3 {
-    color: rgb(232, 120, 225);
+    color: var(--color-accent-primary);
     margin-top: 0;
     margin-bottom: 15px;
-    border-bottom: 1px solid rgba(80, 73, 69, 0.6);
+    border-bottom: 1px solid var(--color-border-primary);
     padding-bottom: 5px;
 }
 
@@ -465,7 +455,7 @@ nav a:focus {
     position: relative;
     overflow: hidden;
     border-radius: 0;
-    background-color: rgba(0, 0, 0, 0.2);
+    background-color: var(--color-bg-placeholder-subtle);
 }
 
 .gear-description {
@@ -473,41 +463,35 @@ nav a:focus {
     min-width: 250px;
 }
 
-
 /* Footer Styling */
 .site-footer {
     text-align: center;
     padding: 20px;
     margin-top: 30px;
     font-size: 0.9em;
-    color: #a89984;
-    /* Gruvbox gray */
+    color: var(--color-text-secondary);
     box-sizing: border-box;
-    border-top: 1px solid rgba(80, 73, 69, 0.6);
-    /* Reverted border color with 60% opacity */
+    border-top: 1px solid var(--color-border-primary);
     width: 100%;
-    /* Ensures it fills the width of its parent (the now max-width constrained body) */
 }
 
 .draggable-title-bar {
-    background-color: rgba(6, 6, 41, 0.8);
-    color: rgb(232, 120, 225);
+    color: var(--color-accent-primary);
     user-select: none;
-    border: 1px solid #a2047b;
+    border: 1px solid var(--color-accent-secondary);
     border-bottom: none;
     padding-left: 5px;
 }
 
 /* Style for the content area within the draggable element */
 .draggable-content {
-    background-color: rgba(6, 6, 41, 0.8);
     text-align: center;
-    border: 1px solid #a2047b;
+    border: 1px solid var(--color-accent-secondary);
 }
 
 /* Remove padding/border/background from .draggable-image-window if it's now wrapped by .draggable-content */
 .draggable-image-window {
-    background-color: rgba(6, 6, 41, 0.8);
+    background-color: var(--color-bg-secondary);
 }
 
 /* Ensure images within the draggable window respect its size */
@@ -524,7 +508,6 @@ nav a:focus {
 
     .site-header {
         padding: 15px 0px 0px;
-        /* Adjusted padding for smaller screens to match nav ul negative margins */
     }
 
     .site-header h1 {
@@ -533,7 +516,6 @@ nav a:focus {
 
     nav ul {
         flex-direction: column;
-        /* Stack navigation items vertically on smaller screens */
         margin-left: 0;
         margin-right: 0;
         width: 100%;
@@ -541,13 +523,11 @@ nav a:focus {
 
     nav li {
         margin: 0px 0;
-        /* No vertical margin between stacked buttons */
         width: 100%;
-        /* Ensure each li takes full width */
     }
 
     nav a {
-        border-bottom: 1px solid #a2047b;
+        border-bottom: 1px solid var(--color-accent-secondary);
         border-left: none;
         border-right: none;
     }
@@ -556,28 +536,22 @@ nav a:focus {
         padding: 20px;
     }
 
-    /* Stack sidebar below main content on smaller screens */
     .main-layout-grid {
         grid-template-columns: 1fr;
-        /* Single column layout */
         gap: 20px;
-        /* Space between stacked main content and sidebar */
     }
 
     .main-content-area {
         gap: 15px;
-        /* Adjust gap for smaller screens if needed */
     }
 
     .photo-grid {
         grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-        /* Adjust grid for smaller screens */
         gap: 15px;
     }
 
     .modal-content {
         width: 95%;
-        /* Adjust modal image width for very small screens */
         height: auto;
     }
 
@@ -600,18 +574,13 @@ nav a:focus {
 
     .gear-content-wrapper {
         flex-direction: column;
-        /* Stack image and text vertically */
         align-items: center;
-        /* Center items when stacked */
     }
 
     .gear-image-container {
         width: 80%;
-        /* Make image container wider on stacked mobile layout */
         max-width: 300px;
-        /* Prevent it from getting too wide */
         height: 200px;
-        /* Keep height fixed or adjust as needed */
     }
 
     .sidebar {
@@ -634,7 +603,6 @@ nav a:focus {
 
     .photo-grid {
         grid-template-columns: 1fr;
-        /* Single column on very small screens */
     }
 
     .sidebar {
