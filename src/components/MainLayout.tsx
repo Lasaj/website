@@ -62,8 +62,9 @@ export default function MainLayout({ children }: MainLayoutProps) {
         <SidebarImages />
       </aside>
       
-      <DraggableElement ref={draggableRef} initialX={draggableOffset.x} initialY={draggableOffset.y} restrictToParent={false} title="&#x2724;">
-        <div className="draggable-image-window">
+      <DraggableElement ref={draggableRef} initialX={draggableOffset.x}
+        initialY={draggableOffset.y} restrictToParent={false} title="&#x2724;">
+        <div>
           <Image
             src="/images/canon_a1_2_round.png"
             alt="Canon A1 Camera Icon"

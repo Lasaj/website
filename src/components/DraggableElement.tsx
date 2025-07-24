@@ -85,7 +85,7 @@ const DraggableElement = forwardRef<HTMLDivElement, DraggableElementProps>(
 
     return (
       <div
-        className="draggable-image-window"
+        className="draggable-window"
         ref={ref}
         style={draggableContainerStyle}
       >

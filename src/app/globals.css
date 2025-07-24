@@ -8,6 +8,13 @@
     /* Ensures text is visible during font loading */
 }
 
+@font-face {
+    font-family: 'Old Standard TT';
+    src: url('https: //fonts.googleapis.com/css2?family=Old+Standard+TT&display=swap') format('truetype');
+    font-display: swap;
+    /* Ensures text is visible during font loading */
+}
+
 .theme-vaporpunk {
     /* Backgrounds and text */
     --background-image: url('/images/bg_gradient.png');
@@ -48,38 +55,45 @@
 
 .theme-vintage-analog {
     /* Backgrounds and text */
-    --background-image: ;
-    --color-bg-primary: rgb(248, 244, 240);
-    --color-text-primary: rgb(60, 50, 40);
-    --color-bg-secondary: rgba(224, 216, 200, 0.7);
-    --color-bg-tertiary: rgba(200, 190, 170, 0.8);
-    --color-bg-modal-overlay: rgba(255, 248, 235, 0.9);
-    --color-bg-nav-hover: rgba(190, 170, 140, 0.5);
-    --color-bg-nav-hover-darker: rgba(190, 170, 140, 0.8);
-    --color-bg-placeholder-subtle: rgba(120, 100, 80, 0.15);
+    --background-image: url('/images/bg_paper.png');
+    --color-bg-primary: rgb(240, 235, 220);
+    --color-text-primary: rgb(50, 45, 40);
+    --color-bg-secondary: rgba(220, 215, 200, 0.8);
+    --color-bg-tertiary: rgba(180, 175, 160, 0.4);
+    --color-bg-modal-overlay: rgba(0, 0, 0, 0.7);
+    --color-bg-nav-hover: rgba(150, 140, 130, 0.3);
+    --color-bg-nav-hover-darker: rgba(150, 140, 130, 0.5);
+    --color-bg-placeholder-subtle: rgba(0, 0, 0, 0.1);
+
+    --color-accent-primary-hover: rgb(180, 100, 50);
+    --color-accent-link-active: rgb(100, 80, 60);
 
     /* Accent Colors */
-    --color-accent-primary: rgb(186, 104, 60);
-    --color-accent-secondary: rgb(120, 84, 60);
-    --color-accent-link: rgb(93, 125, 130);
-    --color-accent-link-hover: rgb(60, 100, 105);
-    --color-accent-modal-arrow: rgb(186, 104, 60);
+    --color-accent-primary: rgb(160, 90, 40);
+    --color-accent-secondary: rgb(120, 70, 30);
+    --color-accent-link: rgb(80, 120, 150);
+    --color-accent-link-hover: rgb(60, 100, 130);
+    --color-accent-modal-arrow: rgb(160, 90, 40);
 
     /* Borders and separators */
-    --color-border-primary: rgba(100, 80, 60, 0.3);
-    --color-border-accent: rgb(120, 84, 60);
+    --color-border-primary: rgba(150, 140, 130, 0.6);
+    --color-border-accent: rgb(120, 70, 30);
+
+    /* Extra for gruvbox gray (repurposed for secondary text) */
+    --color-text-secondary: rgb(120, 110, 100);
 
     /* Borders */
     --border-width-thin: 1px;
     --border-width-thick: 2px;
-    --border-radius-small: 2px;
+    --border-radius-small: 3px;
     --border-radius-medium: 5px;
 
     /* Fonts */
-    --header-fonts: 'Inter', sans-serif;
+    --header-fonts: 'Old Standard TT', serif;
 }
 
 :root {
+    /* Backgrounds and text */
     --background-image: url('/images/bg_gradient.png');
     --color-bg-primary: rgb(29, 32, 33);
     --color-text-primary: rgb(235, 219, 178);
@@ -89,18 +103,24 @@
     --color-bg-nav-hover: rgba(102, 92, 84, 0.6);
     --color-bg-nav-hover-darker: rgba(102, 92, 84, 0.8);
     --color-bg-placeholder-subtle: rgba(0, 0, 0, 0.2);
+    --color-accent-primary-hover: rgb(255, 150, 240);
+    --color-accent-link-active: rgb(0, 90, 150);
 
+    /* Accent Colors */
     --color-accent-primary: rgb(232, 120, 225);
     --color-accent-secondary: rgb(162, 4, 123);
     --color-accent-link: rgb(0, 121, 200);
     --color-accent-link-hover: rgb(0, 121, 200);
     --color-accent-modal-arrow: rgb(232, 120, 225);
 
+    /* Borders and separators */
     --color-border-primary: rgba(80, 73, 69, 0.6);
     --color-border-accent: rgb(162, 4, 123);
 
+    /* Extra for gruvbox gray */
     --color-text-secondary: rgb(168, 153, 132);
 
+    /* Borders */
     --border-width-thin: 1px;
     --border-width-thick: 2px;
     --border-radius-small: 0px;
@@ -224,10 +244,11 @@ nav a:focus {
     border-bottom: 2px solid var(--color-border-primary);
     padding-bottom: 10px;
     margin-bottom: 20px;
+    font-family: var(--header-fonts);
 }
 
 .h-card-section {
-    background-color: var(--color-bg-secondary);
+    background-color: var(--color-bg-tertiary);
     padding: 20px;
     border-radius: var(--border-radius-small);
     margin-top: 0;
@@ -260,14 +281,15 @@ nav a:focus {
     padding: 20px;
     border-radius: var(--border-radius-small);
     margin-bottom: 20;
-    background-color: var(--color-bg-secondary);
+    background-color: var(--color-bg-tertiary);
     box-shadow: 0 1px 3px var(--color-bg-placeholder-subtle);
 }
 
 .h-entry h3 {
     margin-top: 0;
-    font-size: 1.5em;
+    font-size: 1.2em;
     color: var(--color-accent-primary);
+    font-family: var(--header-fonts);
 }
 
 .h-entry h3 a {
@@ -529,13 +551,20 @@ nav a:focus {
     width: 100%;
 }
 
+/* Remove padding/border/background from .draggable-image-window if it's now wrapped by .draggable-content */
+.draggable-window {
+    box-shadow: 0 4px 8px var(--color-bg-modal-overlay);
+    background-color: var(--color-bg-secondary);
+    user-select: none;
+}
+
 .draggable-title-bar {
     color: var(--color-accent-primary);
-    user-select: none;
     border: var(--border-width-thin) solid var(--color-accent-secondary);
     border-bottom: none;
     padding-left: 5px;
     border-radius: var(--border-radius-small);
+    user-select: none;
 }
 
 /* Style for the content area within the draggable element */
@@ -543,20 +572,13 @@ nav a:focus {
     text-align: center;
     border: var(--border-width-thin) solid var(--color-accent-secondary);
     border-radius: var(--border-radius-small);
+    color: var(--color-accent-primary);
+    user-select: none;
 }
 
-/* Remove padding/border/background from .draggable-image-window if it's now wrapped by .draggable-content */
-.draggable-image-window {
-    background-color: var(--color-bg-secondary);
-    border: var(--border-width-thin);
-    border-radius: var(--border-radius-small);
-}
-
-/* Ensure images within the draggable window respect its size */
-.draggable-image-window img {
+.draggable-window img {
     max-width: 80%;
     max-height: 80%;
-    border-radius: var(--border-radius-small);
 }
 
 /* Responsive Adjustments */
