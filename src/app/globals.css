@@ -1,4 +1,4 @@
-/* Custom Font Definition */
+/* Custom font definitions */
 @font-face {
     font-family: 'Fireye GF Headline';
     src: url('/fonts/fireye_gf/FireyeGF_3_Headline_condensed.ttf') format('truetype');
@@ -53,7 +53,7 @@
     --header-fonts: 'Fireye GF Headline', 'Inter', sans-serif;
 }
 
-.theme-vintage-analog {
+.theme-vintage-analogue {
     /* Backgrounds and text */
     --background-image: url('/images/bg_paper.png');
     --color-bg-primary: rgb(240, 235, 220);
@@ -106,7 +106,7 @@
     --color-accent-primary-hover: rgb(255, 150, 240);
     --color-accent-link-active: rgb(0, 90, 150);
 
-    /* Accent Colors */
+    /* Accent colors */
     --color-accent-primary: rgb(232, 120, 225);
     --color-accent-secondary: rgb(162, 4, 123);
     --color-accent-link: rgb(0, 121, 200);
@@ -361,7 +361,7 @@ nav a:focus {
     flex-grow: 1;
 }
 
-/* Modal Styling */
+/* Modal styling */
 .image-modal {
     position: fixed;
     z-index: 1000;
@@ -454,6 +454,27 @@ nav a:focus {
     flex-direction: column;
     gap: 15px;
     position: relative;
+}
+
+.toggle-button {
+    background: var(--color-bg-tertiary);
+    color: var(--color-text-primary);
+    border: 1px solid var(--color-accent-secondary);
+    border-radius: var(--border-radius-small);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px;
+    cursor: pointer;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    font-size: 1em;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.toggle-button:hover {
+    background-color: var(--color-bg-nav-hover);
+    border-color: var(--color-accent-primary);
 }
 
 .sidebar h3 {
@@ -551,7 +572,7 @@ nav a:focus {
     width: 100%;
 }
 
-/* Remove padding/border/background from .draggable-image-window if it's now wrapped by .draggable-content */
+/* Draggable window styling */
 .draggable-window {
     box-shadow: 0 4px 8px var(--color-bg-modal-overlay);
     background-color: var(--color-bg-secondary);
@@ -567,7 +588,7 @@ nav a:focus {
     user-select: none;
 }
 
-/* Style for the content area within the draggable element */
+/* Content area within the draggable element */
 .draggable-content {
     text-align: center;
     border: var(--border-width-thin) solid var(--color-accent-secondary);

@@ -4,6 +4,7 @@ import React, { ReactNode, useRef, useState, useEffect } from 'react';
 import SidebarImages from '@/components/SidebarImage';
 import DraggableElement from '@/components/DraggableElement';
 import Image from 'next/image';
+import { useTheme } from './ThemeProvider';
 
 interface MainLayoutProps {
   children: ReactNode; // Main content area grid content
@@ -52,6 +53,8 @@ export default function MainLayout({ children }: MainLayoutProps) {
     };
   }, [children]);
 
+  const { theme, toggleTheme } = useTheme();
+
   return (
     <div className="main-layout-grid" ref={mainGridRef}>
       <div className="main-content-area">
@@ -59,6 +62,13 @@ export default function MainLayout({ children }: MainLayoutProps) {
       </div>
 
       <aside className="sidebar" ref={sidebarRef}>
+        {/* Theme Toggle Button */}
+        <button 
+          className="toggle-button"
+          onClick={toggleTheme}
+        >
+          {theme === 'theme-vaporpunk' ? "Light Theme" : "Dark Theme"}
+        </button>
         <SidebarImages />
       </aside>
       
